@@ -1,8 +1,8 @@
 body {
   background: rgb(63,94,251);
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-  margin: auto;
-  width: auto;
+  width: 100%;
+  
 }
 .container {
   display: flex;
@@ -13,8 +13,8 @@ body {
 }
 
 .grid {
-  width: 200px;
-  height: 400px;
+  width: 200px; /*200px*/
+  height: 400px;/*400px*/
   display: flex;
   flex-wrap: wrap;
   background: rgb(34,193,195);
@@ -23,8 +23,8 @@ body {
 }
 
 .grid div {
-    height: 18px;
-    width: 18px;  
+    height: 18px;/*18px*/
+    width: 18px;/*18px*/  
     border: 1px rgba(134, 12, 114, 0.418) dotted;
 }
 div .startingCube {
@@ -40,9 +40,9 @@ div .startingCube {
 }
 
 .mini-grid {
-  margin-left: 10px;
-  width: 80px;
-  height: 80px;
+  margin-left: 10px; /*10px*/
+  width: 80px; /*80px*/
+  height: 80px; /*80px*/
   display: flex;
   flex-wrap: wrap;
   background: rgb(34,193,195);
@@ -51,8 +51,8 @@ div .startingCube {
 }
 
 .mini-grid div {
-  height: 20px;
-  width: 20px;
+  height: 20px; /*20px*/
+  width: 20px; /*20px*/
 }
 
 #start-button {

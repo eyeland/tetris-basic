@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div'))
-    const ScoreDisplay = grid.querySelector('#score')
-    const StartBtn = grid.querySelector('#start-button')
+    const scoreDisplay = document.querySelector('#score')
+    const startBtn = document.querySelector('#start-button')
     const width = 10
-    let timerID
-    
+    let timerId
+    let nextRandom = 0
+    let score = 0
+    const color = [
+      'orange', 
+      'red'
+    ]
 
     
   //The Tetrominoes
@@ -70,17 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
   }
-    draw()
+    
+    
     //make the tetromino move down every second
 
-    timerID = setInterval(moveDown, 1000)
+    // timerID = setInterval(moveDown, 1000)
 
     //assign functions to keyCodes
     function control(e) {
       if(e.keyCode === 37) {
         moveLeft()
       } else if (e.keyCode === 38) {
-        //rotate()
+        rotate()
       } else if (e.keyCode === 39) {
         moveRight()
       } else if (e.keyCode === 40) {
@@ -103,11 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
             current.forEach(index => squares[currentPosition + index].classList.add('taken'))
             //start a new tetromino falling
+            random = nextRandom
             
-            random = Math.floor(Math.random() * theTetrominoes.length)
+            nextRandom = Math.floor(Math.random() * theTetrominoes.length)
             current = theTetrominoes[random][currentRotation]
             currentPosition = 4
             draw()
+            displayShape()
+            addScore()
+            gameOver()
         }
       }
 
@@ -149,10 +159,74 @@ document.addEventListener('DOMContentLoaded', () => {
         draw()
       }
 
+      //show up-next tetromino in the mini grid
+      const displaySquares = document.querySelectorAll('.mini-grid div')
+      const displayWidth = 4
+      let displayIndex = 0
+      
 
+      //the Tetrominoes without rotation
+      const upNextTetrominos = [
+        [1, displayWidth+1, displayWidth*2+1, 2], // l tetromino
+        [0, displayWidth, displayWidth+1, displayWidth*2+1], // zTetromino
+        [1, displayWidth, displayWidth+1, displayWidth+2], // tTetromino
+        [0, 1, displayWidth, displayWidth+1], //oTetromino
+        [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+      ]
 
+      //display the shape in the mini-grid display
+      function displayShape() {
+        displaySquares.forEach(square => {
+          //remove any trace of a tetromino from the entire grid
+          square.classList.remove('tetromino')
+        })
+        upNextTetrominos[nextRandom].forEach(index => {
+          displaySquares[displayIndex + index].classList.add('tetromino')
+        })
+      }
 
+      //add functionality to the button
+      startBtn.addEventListener('click', () => {
+        if (timerId) {
+          clearInterval(timerId)
+          timerId = null
+        } else {
+          draw()
+          timerId = setInterval(moveDown, 1000)
+          nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+          displayShape()
+        }
+      } )
 
+      //add score
+
+      function addScore() {
+        for (let i = 0; i < 199; i += width) {
+          const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+
+          if(row.every(index => squares[index].classList.contains('taken'))) {
+            score +=1000
+            scoreDisplay.innerHTML = score
+            row.forEach(index => {
+              squares[index].classList.remove('taken')
+              squares[index].classList.remove('tetromino')
+            })
+            const squaresRemoved = squares.splice(i, width)
+            squares = squaresRemoved.concat(squares)
+            squares.forEach(cell => grid.appendChild(cell))
+          }
+        }
+      }
+
+      //game over
+
+      function gameOver() {
+        if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+        scoreDisplay.innerHTML = 'end'
+        clearInterval(timerId)
+        }
+      }
+     
 
 
 } )

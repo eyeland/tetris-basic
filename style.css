@@ -2,12 +2,18 @@ body {
   background: rgb(63,94,251);
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
   width: 100%;
+  text-align: center;
   
 }
 .container {
   display: flex;
-  justify-content: center;
-  align-self:flex-end;
+  flex-direction:row;
+  align-content:space-around;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  width: 320px;
+  
   
   
 }
@@ -19,7 +25,8 @@ body {
   flex-wrap: wrap;
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-  border: 5px solid;
+  border: 2px solid;
+  
 }
 
 .grid div {
@@ -47,7 +54,7 @@ div .startingCube {
   flex-wrap: wrap;
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-  border: 5px solid;
+  border: 2px solid;
 }
 
 .mini-grid div {
@@ -63,8 +70,8 @@ div .startingCube {
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
-  text-align: center;
+  /* padding: 6px 20px; */
+  /* text-align: center; */
   text-decoration: none;
   transition: all 250ms;
   border: 0;
@@ -72,6 +79,7 @@ div .startingCube {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  
 }
 
 #start-button:hover {
@@ -84,16 +92,25 @@ h3 {
   font-size: 30px;
 }
 .controls {
-  border: 5px black solid;
-  padding: 5px;
-  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px black solid;
+  padding: 1px;
+  margin-top: 9px;
   font-family: monospace;
-  font-size: 22px;
-  width: 200px;
+  font-size: 28px; /*22px*/
+  width: 160px; /*200px*/
+  height: 100px; /*100px*/
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+
   
 }
+.controls p {
+  padding: 5px;
+  border: 2px solid black;
+}
+
 .controls h4 {
   text-align: center;
   color:aqua;
@@ -118,4 +135,16 @@ h1 {
 h2 {
   font-family: monospace;
   text-align: center;
+}
+.score-div {
+  
+  height: 30px;
+  padding: 10px;
+  width: 50px;
+}
+
+.button-div {
+  width: 70px;
+  height: 50px;
+ 
 }

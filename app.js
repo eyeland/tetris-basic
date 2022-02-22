@@ -14,7 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
       'green', 
       'blue'
     ]
+    //get buttons for movement 
+    let rotateButton = document.querySelector('#rotate')
+    let rightButton = document.querySelector('#right')
+    let leftButton = document.querySelector('#left')
+    let down = document.querySelector('#down')
 
+    rotateButton.addEventListener('click', rotate)
+    rightButton.addEventListener('click', moveRight)
+    leftButton.addEventListener('click', moveLeft)
+    down.addEventListener('click', moveDown)
     
   //The Tetrominoes
   const lTetromino = [

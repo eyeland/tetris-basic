@@ -145,16 +145,16 @@ h2 {
   
   height: 30px;
   padding: 10px;
-  
+  position: absolute;
+  left: 225px;
+  top: 200px;
   
   
 }
 .score-div p {
   font-family: monospace;
   font-size: 18px;
-  position: absolute;
-  left: 225px;
-  top: 200px;
+ 
 }
 
 .button-div {

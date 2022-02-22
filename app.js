@@ -108,12 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function touchControl() {
-      rotate();
-    }
+    
 
     document.addEventListener('keyup', control)
-    document.addEventListener('touchstart', touchControl)
+    
 
     //move down function
     function moveDown() {

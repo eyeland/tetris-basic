@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPosition += width
         draw()
         freeze()
+        navigator.vibrate(200)
         console.log(currentPosition)
     }
 
@@ -150,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
           currentPosition += 1
         }
         draw()
+        navigator.vibrate(200)
       }
       
       // move the tetromino right, unless is at the edge or there is a blockage
@@ -164,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw()
+        navigator.vibrate(200)
       }
  
       //rotate the tetromino
@@ -175,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         current = theTetrominoes[random][currentRotation]
         draw()
+        navigator.vibrate(200)
       }
 
       //show up-next tetromino in the mini grid

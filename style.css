@@ -14,15 +14,21 @@ body {
 }
 
 .grid {
-  width: 200px; /*200px*/
-  height: 400px;/*400px*/
+  display: grid;
+  grid-template-columns: 200px repeat(10, 1fr);
+  grid-template-rows: 400px repeat(20, 1fr);
+}
+
+/* .grid {
+  width: 200px; 
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
   border: 2px solid;
   
-}
+} */
 
 .grid div {
     height: 18px;/*18px*/

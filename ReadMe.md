@@ -3,3 +3,5 @@
 # This project is part of a tutorial link below
 
 # https://github.com/kubowania/Tetris-Basic
+
+# Video Link https://www.youtube.com/watch?v=rAUn1Lom6dw
